@@ -14,6 +14,7 @@ from keras.layers import Dense
 from scikeras.wrappers import KerasRegressor
 import pandas as pd
 import numpy as np
+import json
 
 # COMMAND ----------
 
@@ -154,16 +155,19 @@ def deeplearning_prediction():
 def main():
     # predict the test data
     lr_metrics = lr_prediction()
-    print("Linear Regression Metrics: \n", lr_metrics)
-    ridge_metrics = ridge_prediction()
-    print("Ridge Regression Metrics: \n", ridge_metrics)
-    lasso_metrics = lasso_prediction()
-    print("Lasso Regression Metrics: \n", lasso_metrics)
-    elastinet_metrics = elastinet_prediction()
-    print("Elastinet Regression Metrics: \n", elastinet_metrics)
-    deeplr_metrics = deeplearning_prediction()
-    print("Deep Learning Regression Metrics: \n", deeplr_metrics)
+#     print("Linear Regression Metrics: \n", lr_metrics)
+#     ridge_metrics = ridge_prediction()
+#     print("Ridge Regression Metrics: \n", ridge_metrics)
+#     lasso_metrics = lasso_prediction()
+#     print("Lasso Regression Metrics: \n", lasso_metrics)
+#     elastinet_metrics = elastinet_prediction()
+#     print("Elastinet Regression Metrics: \n", elastinet_metrics)
+#     deeplr_metrics = deeplearning_prediction()
+#     print("Deep Learning Regression Metrics: \n", deeplr_metrics)
+    return lr_metrics
 
 # COMMAND ----------
 
-main()
+metrics = main()
+dbutils.notebook.exit(json.dumps(
+  metrics))
